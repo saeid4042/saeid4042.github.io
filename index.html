@@ -21,26 +21,26 @@
     
     <div class="container">
         <label class="form-label" for="amount">amount</label>
-        <input class="form-control" onchange="update()" type="text" name="amount" id="amount">
+        <input class="form-control" onchange="update()" type="number" name="amount" id="amount">
 
         <label class="form-label" for="entryPrice">entryPrice</label>
-        <input class="form-control" onchange="update()" type="text" name="entryPrice" id="entryPrice">
+        <input class="form-control" onchange="update()" type="number" name="entryPrice" id="entryPrice">
         
         <label class="form-label" for="exitPrice">exitPrice</label>
-        <input class="form-control" onchange="update()" type="text" name="exitPrice" id="exitPrice">
+        <input class="form-control" onchange="update()" type="number" name="exitPrice" id="exitPrice">
 
         <label class="form-label" for="stopLoss">stopLoss</label>
-        <input class="form-control" onchange="update()" type="text" name="stopLoss" id="stopLoss">
+        <input class="form-control" onchange="update()" type="number" name="stopLoss" id="stopLoss">
         
         <label class="form-label" for="lev">lev</label>
-        <input class="form-control" onchange="update()" type="text" name="lev" id="lev">
+        <input class="form-control" onchange="update()" type="number" name="lev" id="lev">
         
         <label class="form-label" for="dollar">dollar</label>
-        <input class="form-control" onchange="update()" type="text" name="dollar" id="dollar">
+        <input class="form-control" onchange="update()" type="number" name="dollar" id="dollar">
 
         
         <label class="form-label" for="liq">liq</label>
-        <input class="form-control" onchange="update()" type="text" name="liq" id="liq">
+        <input class="form-control" onchange="update()" type="number" name="liq" id="liq">
 
 
         <hr>
@@ -49,6 +49,7 @@
             <div class="card-body">
                 <p id="diff">diff (exitPrice - entryPrice): - </p>
                 <p id="diff2">diff (entryPrice - stoploss): - </p>
+                <p id="RR">RR: - </p>
                 <p id="gross">gross: - </p>
                 <p id="lossPercentage">lossPercentage: - </p>
                 <p id="totalLoss">totalLoss: - </p>
@@ -59,10 +60,14 @@
                 <p id="totalLossLev">totalLossLev: - </p>
                 <p id="profitPercentageLev">profitPercentageLev: - </p>
                 <p id="totalProfitLev">totalProfitLev: - </p>
+                <p id="totalLossLevInToman">totalLossLev(T): - </p>
+                <p id="totalProfitLevInToman">totalProfitLev(T): - </p>
             </div>
           </div>
 
-        
+          <div class="d-grid gap-2">
+            <button class="btn btn-danger btn-block" type="button" onclick="clear()">Clear</button>
+        </div>
 
     </div>
 
@@ -79,6 +84,7 @@
         const diff = document.getElementById('diff');
         const diff2 = document.getElementById('diff2');
         const gross = document.getElementById('gross');
+        const RR = document.getElementById('RR');
         const lossPercentage = document.getElementById('lossPercentage');
         const totalLoss = document.getElementById('totalLoss');
         const profitPercentage = document.getElementById('profitPercentage');
@@ -87,13 +93,36 @@
         const totalLossLev = document.getElementById('totalLossLev');
         const profitPercentageLev = document.getElementById('profitPercentageLev');
         const totalProfitLev = document.getElementById('totalProfitLev');
+        const totalLossLevInToman = document.getElementById('totalLossLevInToman');
+        const totalProfitLevInToman = document.getElementById('totalProfitLevInToman');
+
+        const clear = () => {
+            diff.innerText = `diff (exitPrice - entryPrice): -`;
+            diff2.innerText = `diff (entryPrice - stoploss): -`;
+            gross.innerText = `gross: -`;
+            
+            lossPercentage.innerText = `lossPercentage: -`;
+            totalLoss.innerText = `totalLoss: -`;
+            profitPercentage.innerText = `profitPercentage: -`;
+            totalProfit.innerText = `totalProfit: -`;
+            
+            lossPercentageLev.innerText = `lossPercentageLev: -`;
+            totalLossLev.innerText = `totalLossLev: -`;
+            profitPercentageLev.innerText = `profitPercentageLev: -`;
+            totalProfitLev.innerText = `totalProfitLev: -`;
+
+            totalLossLevInToman.innerText = `totalLossLev(T): -`;
+            totalProfitLevInToman.innerText = `totalProfitLev(T): -`;
+            RR.innerText = `totalProfitLev(T): -`;
+
+        }
 
 
         const update = () => {
-
             const _diff = exitPrice.value - entryPrice.value
             const _diff2 = entryPrice.value - stopLoss.value
             const _gross = amount.value * lev.value
+            const _RR = totalProfit.value / totalLoss.value
 
             const _lossPercentage = (_diff2) * 100 / entryPrice.value
             const _totalLoss = _lossPercentage * amount.value / 100
@@ -104,6 +133,8 @@
             const _totalLossLev = _totalLoss * lev.value
             const _profitPercentageLev = _profitPercentage * lev.value
             const _totalProfitLev = _totalProfit * lev.value
+            const _totalLossLevInToman = _totalLossLev * dollar.value
+            const _totalProfitLevInToman = _totalProfitLev * dollar.value
             
             diff.innerText = `diff (exitPrice - entryPrice): ${_diff}`;
             diff2.innerText = `diff (entryPrice - stoploss): ${_diff2}`;
@@ -118,7 +149,13 @@
             totalLossLev.innerText = `totalLossLev: ${_totalLossLev}`;
             profitPercentageLev.innerText = `profitPercentageLev: ${_profitPercentageLev}`;
             totalProfitLev.innerText = `totalProfitLev: ${_totalProfitLev}`;
+
+            totalLossLevInToman.innerText = `totalLossLev(T): ${_totalLossLevInToman}`;
+            totalProfitLevInToman.innerText = `totalProfitLev(T): ${_totalProfitLevInToman}`;
+            RR.innerText = `totalProfitLev(T): ${_RR}`;
         }
+
+        
     </script>
 
     
