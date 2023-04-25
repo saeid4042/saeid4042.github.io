@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil Calculator</title>
+    <style>
+        body {
+            padding: 50px 0;
+        }
+        .card {
+            background-color: #222;
+            color: #eee;
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-center">profit calculator</h1>
+    
+    <div class="container">
+        <label class="form-label" for="amount">amount</label>
+        <input class="form-control" onchange="update()" type="text" name="amount" id="amount">
+
+        <label class="form-label" for="entryPrice">entryPrice</label>
+        <input class="form-control" onchange="update()" type="text" name="entryPrice" id="entryPrice">
+        
+        <label class="form-label" for="exitPrice">exitPrice</label>
+        <input class="form-control" onchange="update()" type="text" name="exitPrice" id="exitPrice">
+
+        <label class="form-label" for="stopLoss">stopLoss</label>
+        <input class="form-control" onchange="update()" type="text" name="stopLoss" id="stopLoss">
+        
+        <label class="form-label" for="lev">lev</label>
+        <input class="form-control" onchange="update()" type="text" name="lev" id="lev">
+        
+        <label class="form-label" for="dollar">dollar</label>
+        <input class="form-control" onchange="update()" type="text" name="dollar" id="dollar">
+
+        
+        <label class="form-label" for="liq">liq</label>
+        <input class="form-control" onchange="update()" type="text" name="liq" id="liq">
+
+
+        <hr>
+
+        <div class="card">
+            <div class="card-body">
+                <p id="diff">diff (exitPrice - entryPrice): - </p>
+                <p id="diff2">diff (entryPrice - stoploss): - </p>
+                <p id="gross">gross: - </p>
+                <p id="lossPercentage">lossPercentage: - </p>
+                <p id="totalLoss">totalLoss: - </p>
+                <p id="profitPercentage">profitPercentage: - </p>
+                <p id="totalProfit">totalProfit: - </p>
+                
+                <p id="lossPercentageLev">lossPercentageLev: - </p>
+                <p id="totalLossLev">totalLossLev: - </p>
+                <p id="profitPercentageLev">profitPercentageLev: - </p>
+                <p id="totalProfitLev">totalProfitLev: - </p>
+            </div>
+          </div>
+
+        
+
+    </div>
+
+    <script>
+
+        const amount = document.getElementById('amount');
+        const entryPrice = document.getElementById('entryPrice');
+        const exitPrice = document.getElementById('exitPrice');
+        const stopLoss = document.getElementById('stopLoss');
+        const lev = document.getElementById('lev');
+        const dollar = document.getElementById('dollar');
+        const liq = document.getElementById('liq');
+
+        const diff = document.getElementById('diff');
+        const diff2 = document.getElementById('diff2');
+        const gross = document.getElementById('gross');
+        const lossPercentage = document.getElementById('lossPercentage');
+        const totalLoss = document.getElementById('totalLoss');
+        const profitPercentage = document.getElementById('profitPercentage');
+        const totalProfit = document.getElementById('totalProfit');
+        const lossPercentageLev = document.getElementById('lossPercentageLev');
+        const totalLossLev = document.getElementById('totalLossLev');
+        const profitPercentageLev = document.getElementById('profitPercentageLev');
+        const totalProfitLev = document.getElementById('totalProfitLev');
+
+
+        const update = () => {
+
+            const _diff = exitPrice.value - entryPrice.value
+            const _diff2 = entryPrice.value - stopLoss.value
+            const _gross = amount.value * lev.value
+
+            const _lossPercentage = (_diff2) * 100 / entryPrice.value
+            const _totalLoss = _lossPercentage * amount.value / 100
+            const _profitPercentage = (_diff) * 100 / entryPrice.value
+            const _totalProfit = _profitPercentage * amount.value / 100
+
+            const _lossPercentageLev = _lossPercentage * lev.value
+            const _totalLossLev = _totalLoss * lev.value
+            const _profitPercentageLev = _profitPercentage * lev.value
+            const _totalProfitLev = _totalProfit * lev.value
+            
+            diff.innerText = `diff (exitPrice - entryPrice): ${_diff}`;
+            diff2.innerText = `diff (entryPrice - stoploss): ${_diff2}`;
+            gross.innerText = `gross: ${_gross}`;
+            
+            lossPercentage.innerText = `lossPercentage: ${_lossPercentage}`;
+            totalLoss.innerText = `totalLoss: ${_totalLoss}`;
+            profitPercentage.innerText = `profitPercentage: ${_profitPercentage}`;
+            totalProfit.innerText = `totalProfit: ${_totalProfit}`;
+            
+            lossPercentageLev.innerText = `lossPercentageLev: ${_lossPercentageLev}`;
+            totalLossLev.innerText = `totalLossLev: ${_totalLossLev}`;
+            profitPercentageLev.innerText = `profitPercentageLev: ${_profitPercentageLev}`;
+            totalProfitLev.innerText = `totalProfitLev: ${_totalProfitLev}`;
+        }
+    </script>
+
+    
+</body>
+</html>
