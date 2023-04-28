@@ -14,69 +14,69 @@
     <div class="main">
         <div class="container row hideOnPrint">
             <div class="col-lg-12 col-md-12 col-sm-4 col-xs-6">
-                <label class="form-label" for="amount">amount</label>
+                <label class="form-label" for="amount">Amount</label>
                 <input class="form-control" onchange="update()" type="number" name="amount" id="amount">
             </div>
 
             <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
-                <label class="form-label" for="entryPrice">entryPrice</label>
+                <label class="form-label text-primary" for="entryPrice">Entry Price</label>
                 <input class="form-control" onchange="update()" type="number" name="entryPrice" id="entryPrice">
             </div>
             
             <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
-                <label class="form-label" for="exitPrice">exitPrice</label>
+                <label class="form-label text-success" for="exitPrice">Exit Price</label>
                 <input class="form-control" onchange="update()" type="number" name="exitPrice" id="exitPrice">
             </div>
 
             <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
-                <label class="form-label" for="stopLoss">stopLoss</label>
+                <label class="form-label text-danger" for="stopLoss">Stop Loss</label>
                 <input class="form-control" onchange="update()" type="number" name="stopLoss" id="stopLoss">
             </div>
             
             <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
-                <label class="form-label" for="lev">lev</label>
+                <label class="form-label text-danger" for="lev">Leverage</label>
                 <input class="form-control" onchange="update()" type="number" name="lev" id="lev">
             </div>
             
             <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
-                <label class="form-label" for="dollar">dollar</label>
+                <label class="form-label" for="dollar">Dollar</label>
                 <input class="form-control" onchange="update()" type="number" name="dollar" id="dollar">
             </div>
 
-            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
-                <label class="form-label" for="liq">liq</label>
+            <!-- <div class="col-lg-12 col-md-6 col-sm-12 col-xs-6">
+                <label class="form-label" for="liq">Liquidity</label>
                 <input class="form-control" onchange="update()" type="number" name="liq" id="liq">
-            </div>
+            </div> -->
         </div>
 
         <div class="showOnPrint">
             <table class="table">
                 <tr>
-                    <td>amount</td>
+                    <td>Amount</td>
                     <td id="amountPreview">-</td>
                 </tr>
                 <tr>
-                    <td>entryPrice</td>
+                    <td>Entry Price</td>
                     <td id="entryPricePreview">-</td>
                 </tr>
                 <tr>
-                    <td>exitPrice</td>
+                    <td>Exit Price</td>
                     <td id="exitPricePreview">-</td>
                 </tr>
                 <tr>
-                    <td>stopLoss</td>
+                    <td>Stop Loss</td>
                     <td id="stopLossPreview">-</td>
                 </tr>
                 <tr>
-                    <td>lev</td>
+                    <td>Leverage</td>
                     <td id="levPreview">-</td>
                 </tr>
                 <tr>
-                    <td>dollar</td>
+                    <td>Dollar</td>
                     <td id="dollarPreview">-</td>
                 </tr>
                 <tr>
-                    <td>liq</td>
+                    <td>Liquidity</td>
                     <td id="liqPreview">-</td>
                 </tr>
             </table>
@@ -84,60 +84,60 @@
 
         <div>
             <table class="table">
-                <tr>
-                    <td>diff (exitPrice - entryPrice)</td>
+                <tr  class="text-success">
+                    <td>Diff (Exit Price)</td>
                     <td id="diff">-</td>
                 </tr>
-                <tr>
-                    <td>diff (entryPrice - stoploss)</td>
+                <tr class="text-danger">
+                    <td>Diff (Stop Loss)</td>
                     <td id="diff2">-</td>
                 </tr>
-                <tr>
-                    <td>RR</td>
+                <tr class="text-primary">
+                    <td>R/R</td>
                     <td id="RR">-</td>
                 </tr>
                 <tr>
-                    <td>gross</td>
+                    <td>× Leverage</td>
                     <td id="gross">-</td>
                 </tr>
-                <tr>
-                    <td>lossPercentage</td>
+                <tr class="text-danger">
+                    <td>Loss Percentage</td>
                     <td id="lossPercentage">-</td>
                 </tr>
-                <tr>
-                    <td>totalLoss</td>
+                <!-- <tr class="text-danger">
+                    <td>Total Loss</td>
                     <td id="totalLoss">-</td>
-                </tr>
-                <tr>
-                    <td>profitPercentage</td>
+                </tr> -->
+                <tr class="text-success">
+                    <td>Profit Percentage</td>
                     <td id="profitPercentage">-</td>
                 </tr>
-                <tr>
-                    <td>totalProfit</td>
+                <!-- <tr class="text-success">
+                    <td>Total Profit</td>
                     <td id="totalProfit">-</td>
-                </tr>
-                <tr>
-                    <td>lossPercentageLev</td>
+                </tr> -->
+                <!-- <tr class="text-danger">
+                    <td>LossPercentageLev</td>
                     <td id="lossPercentageLev">-</td>
-                </tr>
-                <tr>
-                    <td>totalLossLev</td>
+                </tr> -->
+                <tr class="text-danger">
+                    <td>Total Loss Lev.</td>
                     <td id="totalLossLev">-</td>
                 </tr>
-                <tr>
+                <!-- <tr class="text-success">
                     <td>profitPercentageLev</td>
                     <td id="profitPercentageLev">-</td>
-                </tr>
-                <tr>
-                    <td>totalProfitLev</td>
+                </tr> -->
+                <tr class="text-success">
+                    <td>Total Profit Lev.</td>
                     <td id="totalProfitLev">-</td>
                 </tr>
-                <tr>
-                    <td>totalLossLev(T)</td>
+                <tr class="text-danger">
+                    <td>Total Loss Lev (T)</td>
                     <td id="totalLossLevInToman">-</td>
                 </tr>
-                <tr>
-                    <td>totalProfitLev(T)</td>
+                <tr class="text-success">
+                    <td>Total Profit Lev (T)</td>
                     <td id="totalProfitLevInToman">-</td>
                 </tr>
             </table>

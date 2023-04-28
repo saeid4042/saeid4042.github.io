@@ -1,6 +1,12 @@
 body {
     padding: 50px 0;
 }
+label {
+    font-weight: 600;
+}
+input {
+    background-color: #eee !important;
+}
 * {
     box-sizing: border-box;
 }
@@ -42,7 +48,7 @@ table tr td:not(:first-child) {
     .main > * {
         width: 100%;
     }
-    .main > div > div:not(:last-child) {
+    .main > div > div {
         width: 33%;
     }
 }
