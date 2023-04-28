@@ -47,7 +47,7 @@ const update = () => {
     stopLossPreview.innerText = stopLoss?.value;
     levPreview.innerText = lev?.value;
     dollarPreview.innerText = dollar?.value;
-    liqPreview.innerText = liq?.value;
+    // liqPreview.innerText = liq?.value;
 
     const _diff = exitPrice?.value - entryPrice?.value
     const _diff2 = entryPrice?.value - stopLoss?.value
