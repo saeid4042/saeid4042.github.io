@@ -1,0 +1,81 @@
+body {
+    padding: 50px 0;
+}
+* {
+    box-sizing: border-box;
+}
+.card {
+    background-color: #222;
+    color: #eee;
+}
+.main {
+    display: flex;
+    width: 100%;
+    padding: 12px;
+}
+.main > * {
+    width: 50%;
+    padding: 10px;
+}
+
+#action-buttons {
+    width: 100%;
+    display: flex;
+}
+#action-buttons button {
+ flex: 1;
+ margin: 0px 5px;
+}
+
+table tr td:not(:first-child) {
+    font-weight: 500;
+}
+.showOnPrint {
+    display: none;
+}
+
+
+@media screen and (max-width: 768px) {
+    .main {
+        flex-direction: column;
+    }
+    .main > * {
+        width: 100%;
+    }
+    .main > div > div:not(:last-child) {
+        width: 33%;
+    }
+}
+
+@media print {
+    body, html, .container, .main {
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+    #action-buttons {
+        display: none;
+    }
+    table {
+        font-size: 3pt;
+    }
+    table td {
+        padding: 0.06cm !important;
+        background-color: #fff !important;
+        color:  black !important;
+    }
+    td, tr {
+        background-color: #fff !important;
+        color:  black !important;
+    }
+
+    .showOnPrint {
+        display: block;
+    }
+    .hideOnPrint {
+        display: none;
+    }
+}
+
+@page {
+    margin: 0;
+}

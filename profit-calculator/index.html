@@ -5,159 +5,149 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Profil Calculator</title>
-    <style>
-        body {
-            padding: 50px 0;
-        }
-        .card {
-            background-color: #222;
-            color: #eee;
-        }
-    </style>
+    <title>Profit Calculator</title>
+    <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-    <h1 class="text-center">profit calculator</h1>
+    <h1 class="text-center hideOnPrint">profit calculator</h1>
     
-    <div class="container">
-        <label class="form-label" for="amount">amount</label>
-        <input class="form-control" onchange="update()" type="number" name="amount" id="amount">
-
-        <label class="form-label" for="entryPrice">entryPrice</label>
-        <input class="form-control" onchange="update()" type="number" name="entryPrice" id="entryPrice">
-        
-        <label class="form-label" for="exitPrice">exitPrice</label>
-        <input class="form-control" onchange="update()" type="number" name="exitPrice" id="exitPrice">
-
-        <label class="form-label" for="stopLoss">stopLoss</label>
-        <input class="form-control" onchange="update()" type="number" name="stopLoss" id="stopLoss">
-        
-        <label class="form-label" for="lev">lev</label>
-        <input class="form-control" onchange="update()" type="number" name="lev" id="lev">
-        
-        <label class="form-label" for="dollar">dollar</label>
-        <input class="form-control" onchange="update()" type="number" name="dollar" id="dollar">
-
-        
-        <label class="form-label" for="liq">liq</label>
-        <input class="form-control" onchange="update()" type="number" name="liq" id="liq">
-
-
-        <hr>
-
-        <div class="card">
-            <div class="card-body">
-                <p id="diff">diff (exitPrice - entryPrice): - </p>
-                <p id="diff2">diff (entryPrice - stoploss): - </p>
-                <p id="RR">RR: - </p>
-                <p id="gross">gross: - </p>
-                <p id="lossPercentage">lossPercentage: - </p>
-                <p id="totalLoss">totalLoss: - </p>
-                <p id="profitPercentage">profitPercentage: - </p>
-                <p id="totalProfit">totalProfit: - </p>
-                
-                <p id="lossPercentageLev">lossPercentageLev: - </p>
-                <p id="totalLossLev">totalLossLev: - </p>
-                <p id="profitPercentageLev">profitPercentageLev: - </p>
-                <p id="totalProfitLev">totalProfitLev: - </p>
-                <p id="totalLossLevInToman">totalLossLev(T): - </p>
-                <p id="totalProfitLevInToman">totalProfitLev(T): - </p>
+    <div class="main">
+        <div class="container row hideOnPrint">
+            <div class="col-lg-12 col-md-12 col-sm-4 col-xs-6">
+                <label class="form-label" for="amount">amount</label>
+                <input class="form-control" onchange="update()" type="number" name="amount" id="amount">
             </div>
-          </div>
 
-          <div class="d-grid gap-2">
-            <button class="btn btn-danger btn-block" type="button" onclick="clear()">Clear</button>
+            <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
+                <label class="form-label" for="entryPrice">entryPrice</label>
+                <input class="form-control" onchange="update()" type="number" name="entryPrice" id="entryPrice">
+            </div>
+            
+            <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
+                <label class="form-label" for="exitPrice">exitPrice</label>
+                <input class="form-control" onchange="update()" type="number" name="exitPrice" id="exitPrice">
+            </div>
+
+            <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
+                <label class="form-label" for="stopLoss">stopLoss</label>
+                <input class="form-control" onchange="update()" type="number" name="stopLoss" id="stopLoss">
+            </div>
+            
+            <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
+                <label class="form-label" for="lev">lev</label>
+                <input class="form-control" onchange="update()" type="number" name="lev" id="lev">
+            </div>
+            
+            <div class="col-lg-12 col-md-6 col-sm-4 col-xs-6">
+                <label class="form-label" for="dollar">dollar</label>
+                <input class="form-control" onchange="update()" type="number" name="dollar" id="dollar">
+            </div>
+
+            <div class="col-lg-12 col-md-6 col-sm-12 col-xs-12">
+                <label class="form-label" for="liq">liq</label>
+                <input class="form-control" onchange="update()" type="number" name="liq" id="liq">
+            </div>
         </div>
 
+        <div class="showOnPrint">
+            <table class="table">
+                <tr>
+                    <td>amount</td>
+                    <td id="amountPreview">-</td>
+                </tr>
+                <tr>
+                    <td>entryPrice</td>
+                    <td id="entryPricePreview">-</td>
+                </tr>
+                <tr>
+                    <td>exitPrice</td>
+                    <td id="exitPricePreview">-</td>
+                </tr>
+                <tr>
+                    <td>stopLoss</td>
+                    <td id="stopLossPreview">-</td>
+                </tr>
+                <tr>
+                    <td>lev</td>
+                    <td id="levPreview">-</td>
+                </tr>
+                <tr>
+                    <td>dollar</td>
+                    <td id="dollarPreview">-</td>
+                </tr>
+                <tr>
+                    <td>liq</td>
+                    <td id="liqPreview">-</td>
+                </tr>
+            </table>
+        </div>
+
+        <div>
+            <table class="table">
+                <tr>
+                    <td>diff (exitPrice - entryPrice)</td>
+                    <td id="diff">-</td>
+                </tr>
+                <tr>
+                    <td>diff (entryPrice - stoploss)</td>
+                    <td id="diff2">-</td>
+                </tr>
+                <tr>
+                    <td>RR</td>
+                    <td id="RR">-</td>
+                </tr>
+                <tr>
+                    <td>gross</td>
+                    <td id="gross">-</td>
+                </tr>
+                <tr>
+                    <td>lossPercentage</td>
+                    <td id="lossPercentage">-</td>
+                </tr>
+                <tr>
+                    <td>totalLoss</td>
+                    <td id="totalLoss">-</td>
+                </tr>
+                <tr>
+                    <td>profitPercentage</td>
+                    <td id="profitPercentage">-</td>
+                </tr>
+                <tr>
+                    <td>totalProfit</td>
+                    <td id="totalProfit">-</td>
+                </tr>
+                <tr>
+                    <td>lossPercentageLev</td>
+                    <td id="lossPercentageLev">-</td>
+                </tr>
+                <tr>
+                    <td>totalLossLev</td>
+                    <td id="totalLossLev">-</td>
+                </tr>
+                <tr>
+                    <td>profitPercentageLev</td>
+                    <td id="profitPercentageLev">-</td>
+                </tr>
+                <tr>
+                    <td>totalProfitLev</td>
+                    <td id="totalProfitLev">-</td>
+                </tr>
+                <tr>
+                    <td>totalLossLev(T)</td>
+                    <td id="totalLossLevInToman">-</td>
+                </tr>
+                <tr>
+                    <td>totalProfitLev(T)</td>
+                    <td id="totalProfitLevInToman">-</td>
+                </tr>
+            </table>
+            <div id="action-buttons">
+                <!-- <button class="btn btn-danger btn-block" type="button" onclick="clear()">Clear</button> -->
+                <button class="btn btn-danger" type="button" onclick="location.reload()">🗑️ Clear</button>
+                <button class="btn btn-info" type="button" onclick="window.print()">🖨️ Print</button>
+            </div>
+        </div>
     </div>
-
-    <script>
-
-        const amount = document.getElementById('amount');
-        const entryPrice = document.getElementById('entryPrice');
-        const exitPrice = document.getElementById('exitPrice');
-        const stopLoss = document.getElementById('stopLoss');
-        const lev = document.getElementById('lev');
-        const dollar = document.getElementById('dollar');
-        const liq = document.getElementById('liq');
-
-        const diff = document.getElementById('diff');
-        const diff2 = document.getElementById('diff2');
-        const gross = document.getElementById('gross');
-        const RR = document.getElementById('RR');
-        const lossPercentage = document.getElementById('lossPercentage');
-        const totalLoss = document.getElementById('totalLoss');
-        const profitPercentage = document.getElementById('profitPercentage');
-        const totalProfit = document.getElementById('totalProfit');
-        const lossPercentageLev = document.getElementById('lossPercentageLev');
-        const totalLossLev = document.getElementById('totalLossLev');
-        const profitPercentageLev = document.getElementById('profitPercentageLev');
-        const totalProfitLev = document.getElementById('totalProfitLev');
-        const totalLossLevInToman = document.getElementById('totalLossLevInToman');
-        const totalProfitLevInToman = document.getElementById('totalProfitLevInToman');
-
-        const clear = () => {
-            diff.innerText = `diff (exitPrice - entryPrice): -`;
-            diff2.innerText = `diff (entryPrice - stoploss): -`;
-            gross.innerText = `gross: -`;
-            
-            lossPercentage.innerText = `lossPercentage: -`;
-            totalLoss.innerText = `totalLoss: -`;
-            profitPercentage.innerText = `profitPercentage: -`;
-            totalProfit.innerText = `totalProfit: -`;
-            
-            lossPercentageLev.innerText = `lossPercentageLev: -`;
-            totalLossLev.innerText = `totalLossLev: -`;
-            profitPercentageLev.innerText = `profitPercentageLev: -`;
-            totalProfitLev.innerText = `totalProfitLev: -`;
-
-            totalLossLevInToman.innerText = `totalLossLev(T): -`;
-            totalProfitLevInToman.innerText = `totalProfitLev(T): -`;
-            RR.innerText = `totalProfitLev(T): -`;
-
-        }
-
-
-        const update = () => {
-            const _diff = exitPrice.value - entryPrice.value
-            const _diff2 = entryPrice.value - stopLoss.value
-            const _gross = amount.value * lev.value
-            const _RR = totalProfit.value / totalLoss.value
-
-            const _lossPercentage = (_diff2) * 100 / entryPrice.value
-            const _totalLoss = _lossPercentage * amount.value / 100
-            const _profitPercentage = (_diff) * 100 / entryPrice.value
-            const _totalProfit = _profitPercentage * amount.value / 100
-
-            const _lossPercentageLev = _lossPercentage * lev.value
-            const _totalLossLev = _totalLoss * lev.value
-            const _profitPercentageLev = _profitPercentage * lev.value
-            const _totalProfitLev = _totalProfit * lev.value
-            const _totalLossLevInToman = _totalLossLev * dollar.value
-            const _totalProfitLevInToman = _totalProfitLev * dollar.value
-            
-            diff.innerText = `diff (exitPrice - entryPrice): ${_diff}`;
-            diff2.innerText = `diff (entryPrice - stoploss): ${_diff2}`;
-            gross.innerText = `gross: ${_gross}`;
-            
-            lossPercentage.innerText = `lossPercentage: ${_lossPercentage}`;
-            totalLoss.innerText = `totalLoss: ${_totalLoss}`;
-            profitPercentage.innerText = `profitPercentage: ${_profitPercentage}`;
-            totalProfit.innerText = `totalProfit: ${_totalProfit}`;
-            
-            lossPercentageLev.innerText = `lossPercentageLev: ${_lossPercentageLev}`;
-            totalLossLev.innerText = `totalLossLev: ${_totalLossLev}`;
-            profitPercentageLev.innerText = `profitPercentageLev: ${_profitPercentageLev}`;
-            totalProfitLev.innerText = `totalProfitLev: ${_totalProfitLev}`;
-
-            totalLossLevInToman.innerText = `totalLossLev(T): ${_totalLossLevInToman}`;
-            totalProfitLevInToman.innerText = `totalProfitLev(T): ${_totalProfitLevInToman}`;
-            RR.innerText = `totalProfitLev(T): ${_RR}`;
-        }
-
-        
-    </script>
-
-    
+    <script src="scripts.js"></script>
 </body>
 </html>
